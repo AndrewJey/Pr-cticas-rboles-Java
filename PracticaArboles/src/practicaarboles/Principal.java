@@ -17,21 +17,20 @@ public class Principal {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
-        Logic.ArbolBinario a= new Logic.ArbolBinario();
-        a.insertarArbol(Integer.parseInt(JOptionPane.showInputDialog("")),null);
-        a.insertarArbol(Integer.parseInt(JOptionPane.showInputDialog("")),null);
-        a.insertarArbol(Integer.parseInt(JOptionPane.showInputDialog("")),null);
-        a.insertarArbol(Integer.parseInt(JOptionPane.showInputDialog("")),null);
-        a.insertarArbol(Integer.parseInt(JOptionPane.showInputDialog("")),null);
-        System.out.println("Hijos Izquierdos");
-        a.reccorrer_en_orden(a.raiz.hijoIzquierdo);
-        System.out.println(" ");
-        System.out.println("Hijos Derechos");
-        a.reccorrer_en_orden(a.raiz.hijoDerecho);
-        System.out.println(" ");
-        System.out.println("Raiz");
-        a.reccorrer_en_orden(a.raiz);
-        System.out.println(" ");
+        Logic.ArbolBinario arbol = new Logic.ArbolBinario();
+        if (args.length > 0) {
+            try { for (String valor : args) arbol.insertarArbol(Integer.parseInt(valor), null); }
+            catch (NumberFormatException error) { System.err.println("Usa argumentos enteros."); return; }
+        } else {
+            for (int i = 0; i < 5;) {
+                String valor = JOptionPane.showInputDialog("Número " + (i + 1) + " de 5 (Cancelar para salir)");
+                if (valor == null) return;
+                try { arbol.insertarArbol(Integer.parseInt(valor.trim()), null); i++; }
+                catch (NumberFormatException error) { JOptionPane.showMessageDialog(null, "Ingresa un entero válido."); }
+            }
+        }
+        System.out.println("Recorrido ordenado:");
+        arbol.reccorrer_en_orden(arbol.raiz);
+        System.out.println();
     }   
 }

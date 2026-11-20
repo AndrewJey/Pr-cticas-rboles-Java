@@ -1,0 +1,9 @@
+[
+  {
+    "project": "PracticaArboles/build.xml",
+    "source": "checks/TreeCheck.java",
+    "main": "TreeCheck",
+    "headless": true,
+    "classpath": []
+  }
+]

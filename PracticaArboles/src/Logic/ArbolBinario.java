@@ -39,9 +39,16 @@ public void insertarArbol(int llave,Object valor){
     public void reccorrer_en_orden(Nodo x){
         if(x != null){
             reccorrer_en_orden(x.hijoIzquierdo);
-            System.out.print(x.llave);
+            System.out.print(x.llave + " ");
             reccorrer_en_orden(x.hijoDerecho);
         }
+    }
+    public Nodo buscar(int llave) {
+        Nodo actual = raiz;
+        while (actual != null && actual.llave != llave) {
+            actual = llave < actual.llave ? actual.hijoIzquierdo : actual.hijoDerecho;
+        }
+        return actual;
     }
 }
 
